@@ -8,16 +8,8 @@ import {HelperConfig} from "script/HelperConfig.s.sol";
 contract HelperConfigTest is Test {
     function testHelperConfigIsCreated() public {
         HelperConfig helperConfig = new HelperConfig();
-        (
-            uint256 entranceFee,
-            uint256 interval,
-            address vrfCoordinator,
-            bytes32 gasLane,
-            uint64 subscriptionId,
-            uint32 callbackGasLimit,
-            address link,
-            uint256 deployerKey
-        ) = helperConfig.activeNetworkConfig();
+        (uint256 entranceFee, , , , , , , ) = helperConfig
+            .activeNetworkConfig();
 
         assert(entranceFee == 0.01 ether);
     }
